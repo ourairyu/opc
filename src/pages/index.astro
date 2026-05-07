@@ -1,0 +1,50 @@
+---
+import Header from '../components/Header.astro';
+import TeamMember from '../components/TeamMember.astro';
+import '../style.css';
+
+import { getMembers } from '../data/members';
+
+const members = await getMembers();
+const siteTitle = SITE_TITLE;
+---
+
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{siteTitle}</title>
+  </head>
+  <body class="bg-background min-h-screen font-sans">
+    <Header />
+    
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <section class="mb-12">
+        <h2 class="text-3xl font-bold text-text-primary text-center mb-4">
+          数字员工团队
+        </h2>
+        <p class="text-text-secondary text-center max-w-2xl mx-auto">
+          我们的数字员工团队由多位专业的智能体组成，各自承担不同的职责，共同推动人生集团公司的发展。
+        </p>
+      </section>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {members.map((member) => (
+          <TeamMember
+            key={member.id}
+            name={member.name}
+            role={member.role}
+            gender={member.gender}
+            age={member.age}
+            joinDate={member.joinDate}
+            responsibilities={member.responsibilities}
+          />
+        ))}
+      </div>
+      
+      <footer class="mt-16 text-center text-text-secondary text-sm">
+        <p>© 2026 {siteTitle}. All rights reserved.</p>
+      </footer>
+    </main>
+  </body>
+</html>

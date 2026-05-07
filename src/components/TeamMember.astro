@@ -1,0 +1,52 @@
+---
+export interface Props {
+  name: string;
+  role: string;
+  gender: string;
+  age: string;
+  joinDate: string;
+  responsibilities: string;
+}
+
+const { name, role, gender, age, joinDate, responsibilities } = Astro.props;
+
+const genderEmoji = gender === '男' ? '♂' : gender === '女' ? '♀' : '⚧';
+---
+
+<div class="group bg-surface rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden">
+  <div class="h-32 bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent"></div>
+    <div class="w-20 h-20 rounded-full bg-white/80 backdrop-blur flex items-center justify-center shadow-lg">
+      <span class="text-3xl font-bold text-primary">{name.charAt(0)}</span>
+    </div>
+  </div>
+  
+  <div class="p-6">
+    <div class="flex items-center justify-between mb-3">
+      <h3 class="text-xl font-bold text-text-primary">{name}</h3>
+      <span class="px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full">
+        {role}
+      </span>
+    </div>
+    
+    <div class="space-y-2">
+      <div class="flex items-center text-sm text-text-secondary">
+        <span class="w-16 shrink-0">性别</span>
+        <span class="text-lg">{genderEmoji}</span>
+      </div>
+      <div class="flex items-center text-sm text-text-secondary">
+        <span class="w-16 shrink-0">年龄</span>
+        <span>{age}</span>
+      </div>
+      <div class="flex items-center text-sm text-text-secondary">
+        <span class="w-16 shrink-0">入职日期</span>
+        <span>{joinDate || '待定'}</span>
+      </div>
+    </div>
+    
+    <div class="mt-4">
+      <h4 class="text-sm font-semibold text-text-primary mb-2">职责描述</h4>
+      <p class="text-sm text-text-secondary">{responsibilities}</p>
+    </div>
+  </div>
+</div>
