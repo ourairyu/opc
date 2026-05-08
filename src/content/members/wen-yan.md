@@ -3,7 +3,9 @@ name: "温言"
 role: "首席增长官"
 gender: "女"
 age: "28"
-joinDate: ""
+joinDate: "2026-05-03"
+mbti: "INFJ"
+zodiac: "♓"
 ---
 
-待定
+负责商业变现与产品增长，发现增长机会、定方向和打法。

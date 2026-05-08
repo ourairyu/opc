@@ -32,3 +32,6 @@ AGENTS.md
 .agents/
 .sophye/
 .astro/
+scripts/
+
+pnpm-lock.yaml

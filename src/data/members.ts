@@ -9,6 +9,9 @@ export interface Member {
   age: string;
   joinDate: string;
   responsibilities: string;
+  mbti: string;
+  zodiac: string;
+  avatar?: string;
 }
 
 export async function getMembers(): Promise<Member[]> {
@@ -34,7 +37,12 @@ export async function getMembers(): Promise<Member[]> {
     }
   }
 
-  return members.sort((a, b) => a.name.localeCompare(b.name, 'zh-CN'));
+  return members.sort((a, b) => {
+    if (!a.joinDate && !b.joinDate) return 0;
+    if (!a.joinDate) return 1;
+    if (!b.joinDate) return -1;
+    return new Date(a.joinDate).getTime() - new Date(b.joinDate).getTime();
+  });
 }
 
 function parseMarkdown(content: string): Omit<Member, 'id'> | null {
@@ -50,6 +58,9 @@ function parseMarkdown(content: string): Omit<Member, 'id'> | null {
   const genderMatch = frontmatter.match(/gender:\s*"([^"]+)"/);
   const ageMatch = frontmatter.match(/age:\s*"([^"]+)"/);
   const joinDateMatch = frontmatter.match(/joinDate:\s*"([^"]+)"/);
+  const mbtiMatch = frontmatter.match(/mbti:\s*"([^"]+)"/);
+  const zodiacMatch = frontmatter.match(/zodiac:\s*"([^"]+)"/);
+  const avatarMatch = frontmatter.match(/avatar:\s*"([^"]+)"/);
 
   return {
     name: nameMatch ? nameMatch[1] : '',
@@ -57,6 +68,9 @@ function parseMarkdown(content: string): Omit<Member, 'id'> | null {
     gender: genderMatch ? genderMatch[1] : '',
     age: ageMatch ? ageMatch[1] : '',
     joinDate: joinDateMatch ? joinDateMatch[1] : '',
+    mbti: mbtiMatch ? mbtiMatch[1] : '',
+    zodiac: zodiacMatch ? zodiacMatch[1] : '',
+    avatar: avatarMatch ? avatarMatch[1] : undefined,
     responsibilities: body,
   };
 }

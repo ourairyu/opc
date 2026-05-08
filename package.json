@@ -15,5 +15,10 @@
     "@tailwindcss/vite": "4.2.4",
     "astro": "^6.2.2",
     "tailwindcss": "4.2.4"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "4.0.9",
+    "js-yaml": "4.1.1",
+    "tsx": "4.21.0"
   }
 }

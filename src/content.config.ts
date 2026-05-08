@@ -5,10 +5,12 @@ const members = defineCollection({
   schema: ({ image }) => z.object({
     name: z.string(),
     role: z.string(),
-    agentId: z.string(),
-    timezone: z.string(),
-    personality: z.string(),
-    appearance: z.string(),
+    gender: z.string(),
+    age: z.string(),
+    joinDate: z.string(),
+    mbti: z.string(),
+    zodiac: z.string(),
+    avatar: z.string().optional(),
   }),
 });
 

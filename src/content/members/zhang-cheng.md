@@ -3,7 +3,10 @@ name: "张澄"
 role: "战略顾问"
 gender: "男"
 age: "34"
-joinDate: ""
+joinDate: "2026-05-01"
+mbti: "INTJ"
+zodiac: "♍"
+avatar: "/avatars/zhang-cheng.jpg"
 ---
 
-待定
+为人生集团公司提供独立、客观的战略分析与决策支持，以方法论驱动战略落地。
